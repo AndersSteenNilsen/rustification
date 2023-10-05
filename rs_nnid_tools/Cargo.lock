@@ -3,6 +3,12 @@
 version = 3
 
 [[package]]
+name = "arc-swap"
+version = "1.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bddcadddf5e9015d310179a59bb28c4d4b9920ad0f11e8e14dbadf654890c9a6"
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -41,6 +47,12 @@ dependencies = [
  "autocfg",
  "scopeguard",
 ]
+
+[[package]]
+name = "log"
+version = "0.4.20"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b5e6163cb8c49088c2c36f57875e58ccd8c87c7427f7fbd50ea6710b2f3f2e8f"
 
 [[package]]
 name = "memoffset"
@@ -127,6 +139,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "pyo3-log"
+version = "0.8.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f47b0777feb17f61eea78667d61103758b243a871edc09a7786500a50467b605"
+dependencies = [
+ "arc-swap",
+ "log",
+ "pyo3",
+]
+
+[[package]]
 name = "pyo3-macros"
 version = "0.19.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -171,7 +194,9 @@ dependencies = [
 name = "rs_nnid_tools"
 version = "0.1.0"
 dependencies = [
+ "log",
  "pyo3",
+ "pyo3-log",
 ]
 
 [[package]]
