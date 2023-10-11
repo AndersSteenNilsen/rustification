@@ -1,15 +1,8 @@
 from datetime import datetime
-from rs_nnid_tools import mod11_test
+from rs_nnid_tools import mod11_test, is_valid_ddmmyy_date
 
 import json
 CONTROLL_FACTORS = [[3, 7, 6, 1, 8, 9, 4, 5, 2, 1], [5, 4, 3, 2, 7, 6, 5, 4, 3, 2, 1]]
-
-def validate_date(birth_date):
-    try:
-        datetime.strptime(birth_date, '%d%m%y')
-    except TypeError:
-        return False
-    return True
 
 def validate_nnid(nnid: str) -> bool:
     if not len(nnid) == 11:
@@ -20,9 +13,9 @@ def validate_nnid(nnid: str) -> bool:
         numbers_to_check = nnid_a[:10+i]
         if not mod11_test(numbers_to_check, factor_list):
             return False
-
+            
     birth_date = nnid[:6]
-    if not validate_date(birth_date):
+    if not is_valid_ddmmyy_date(birth_date):
         return False
 
     return True
